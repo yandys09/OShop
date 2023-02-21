@@ -1,0 +1,15 @@
+.site{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.main{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding:10px 0 0 0;
+  margin-top: 50px;
+}
+.main .box-shadow{
+  box-shadow: 1px 1px 6px -3px rgb(0 0 0  / 100%);
+}

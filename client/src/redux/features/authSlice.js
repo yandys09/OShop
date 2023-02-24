@@ -64,6 +64,22 @@ export const changePassword = createAsyncThunk(
   }
 );
 
+export const updateProfile = createAsyncThunk(
+  "auth/updateProfile",
+  async ({ formData, toast }, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosPrivate.put(`/me/update`, formData, {
+        headers: { "Content-type": "multipart/form-data" },
+      });
+      toast.success("Successfully Updated!!.");
+      return data;
+    } catch (error) {
+      toast.error(error.response.data.message);
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState: { mutationResult: { success: false }, credentials: {} },
@@ -118,6 +134,20 @@ const authSlice = createSlice({
     },
     [changePassword.rejected]: (state, action) => {
       state.mutationResult.loading = false;
+    },
+
+    //update profile
+    [updateProfile.pending]: (state, action) => {
+      state.mutationResult.loading = true;
+    },
+    [updateProfile.fulfilled]: (state, action) => {
+      state.mutationResult.loading = false;
+      state.mutationResult.success = action.payload.success;
+      state.credentials.user = action.payload.user;
+    },
+    [updateProfile.rejected]: (state, action) => {
+      state.mutationResult.loading = false;
+      state.credentials.error = action.payload;
     },
   },
 });

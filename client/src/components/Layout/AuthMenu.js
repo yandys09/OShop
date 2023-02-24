@@ -62,8 +62,6 @@ const AuthMenu = () => {
   if (accessToken) {
     const { UserInfo } = jwtDecode(accessToken);
     role = UserInfo.roles[0];
-
-   
   }
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -75,7 +73,7 @@ const AuthMenu = () => {
   };
   const navigate = useNavigate();
   const auth = () => navigate("/auth");
-  const dashboard = () => navigate("/dashboard");
+  const dashboard = () => navigate("/authorized/dashboard");
   const orders = () => navigate("/orders");
   const profile = () => navigate("/profile");
   const logoutUser = () => {

@@ -12,6 +12,7 @@ import AuthorizedRoute from "./components/Routes/AuthorizedRoute";
 import UserProfile from "./components/Auth/UserProfile";
 import UpdateProfile from "./components/Auth/UpdateProfile";
 import UpdatePassword from "./components/Auth/UpdatePassword";
+import Dashboard from "./components/Authorized/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -38,8 +39,9 @@ function App() {
             <Route path="profile" element={<UserProfile />} />
             <Route path="/me/update" element={<UpdateProfile />} />
             <Route path="/password/update" element={<UpdatePassword />} />
-
-            <Route path="/" element={<AuthorizedRoute />}></Route>
+            <Route path="/authorized" element={<AuthorizedRoute />}>
+              <Route path="dashboard" element={<Dashboard />} />
+            </Route>
           </Route>
         </Route>
       </Routes>

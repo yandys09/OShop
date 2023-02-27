@@ -6,6 +6,7 @@ import TreeView from "@mui/lab/TreeView";
 import TreeItem, { treeItemClasses } from "@mui/lab/TreeItem";
 import Collapse from "@mui/material/Collapse";
 import { useSpring, animated } from "react-spring";
+import { useNavigate } from "react-router-dom";
 
 function MinusSquare(props) {
   return (
@@ -81,6 +82,11 @@ const StyledTreeItem = styled((props) => (
 }));
 
 const TreeMenu = () => {
+  const navigate = useNavigate();
+
+  const goto = (page) => {
+    navigate("/authorized/" + page);
+  };
   return (
     <TreeView
       aria-label="customized"
@@ -88,21 +94,80 @@ const TreeMenu = () => {
       defaultCollapseIcon={<MinusSquare />}
       defaultExpandIcon={<PlusSquare />}
       defaultEndIcon={<CloseSquare />}
-      sx={{ height: 264, flexGrow: 1, maxWidth: 400, overflowY: "auto" }}
+      sx={{
+        overflow: "hidden",
+        color: "#fff",
+      }}
     >
-      <StyledTreeItem nodeId="1" label="Main">
-        <StyledTreeItem nodeId="2" label="Hello" />
-        <StyledTreeItem nodeId="3" label="Subtree with children">
-          <StyledTreeItem nodeId="6" label="Hello" />
-          <StyledTreeItem nodeId="7" label="Sub-subtree with children">
-            <StyledTreeItem nodeId="9" label="Child 1" />
-            <StyledTreeItem nodeId="10" label="Child 2" />
-            <StyledTreeItem nodeId="11" label="Child 3" />
-          </StyledTreeItem>
-          <StyledTreeItem nodeId="8" label="Hello" />
+      <StyledTreeItem nodeId="1" label="Menu">
+        <StyledTreeItem nodeId="2" label="Category">
+          <StyledTreeItem
+            nodeId="9"
+            label="New Category"
+            onClick={() => goto("category")}
+          />
+          <StyledTreeItem
+            nodeId="10"
+            label="Category List"
+            onClick={() => goto("categorylist")}
+          />
         </StyledTreeItem>
-        <StyledTreeItem nodeId="4" label="World" />
-        <StyledTreeItem nodeId="5" label="Something something" />
+        <StyledTreeItem nodeId="3" label="Brand">
+          <StyledTreeItem
+            nodeId="11"
+            label="New Brand"
+            onClick={() => goto("brand")}
+          />
+          <StyledTreeItem
+            nodeId="12"
+            label="Brand List"
+            onClick={() => goto("brandlist")}
+          />
+        </StyledTreeItem>
+
+        <StyledTreeItem nodeId="4" label="Store">
+          <StyledTreeItem
+            nodeId="13"
+            label="New Store"
+            onClick={() => goto("store")}
+          />
+          <StyledTreeItem
+            nodeId="14"
+            label="Store List"
+            onClick={() => goto("storelist")}
+          />
+        </StyledTreeItem>
+
+        <StyledTreeItem nodeId="5" label="Product">
+          <StyledTreeItem
+            nodeId="15"
+            label="New Product"
+            onClick={() => goto("product")}
+          />
+          <StyledTreeItem
+            nodeId="16"
+            label="Product List"
+            onClick={() => goto("productlist")}
+          />
+        </StyledTreeItem>
+
+        <StyledTreeItem
+          nodeId="6"
+          label="Review List"
+          onClick={() => goto("reviewlist")}
+        />
+
+        <StyledTreeItem
+          nodeId="7"
+          label="Order List"
+          onClick={() => goto("orderlist")}
+        />
+
+        <StyledTreeItem
+          nodeId="8"
+          label="User List"
+          onClick={() => goto("userlist")}
+        />
       </StyledTreeItem>
     </TreeView>
   );

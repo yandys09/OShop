@@ -13,6 +13,7 @@ import UserProfile from "./components/Auth/UserProfile";
 import UpdateProfile from "./components/Auth/UpdateProfile";
 import UpdatePassword from "./components/Auth/UpdatePassword";
 import Dashboard from "./components/Authorized/Dashboard/Dashboard";
+import AddNewBrand from "./components/Authorized/Brand/AddNewBrand";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="/password/update" element={<UpdatePassword />} />
             <Route path="/authorized" element={<AuthorizedRoute />}>
               <Route path="dashboard" element={<Dashboard />} />
+              <Route path="brand" element={<AddNewBrand />} />
             </Route>
           </Route>
         </Route>

@@ -14,6 +14,8 @@ import UpdateProfile from "./components/Auth/UpdateProfile";
 import UpdatePassword from "./components/Auth/UpdatePassword";
 import Dashboard from "./components/Authorized/Dashboard/Dashboard";
 import AddNewBrand from "./components/Authorized/Brand/AddNewBrand";
+import BrandList from "./components/Authorized/Brand/BrandList";
+import UpdateBrand from "./components/Authorized/Brand/UpdateBrand";
 
 function App() {
   return (
@@ -40,9 +42,12 @@ function App() {
             <Route path="profile" element={<UserProfile />} />
             <Route path="/me/update" element={<UpdateProfile />} />
             <Route path="/password/update" element={<UpdatePassword />} />
+
             <Route path="/authorized" element={<AuthorizedRoute />}>
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="brand" element={<AddNewBrand />} />
+              <Route path="brandlist" element={<BrandList />} />
+              <Route path="brand/:id" element={<UpdateBrand />} />
             </Route>
           </Route>
         </Route>

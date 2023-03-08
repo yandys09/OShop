@@ -14,6 +14,7 @@ const AddNewBrand = () => {
   const { loading, success } = useSelector(selectBrandMutationResult);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const jsonData = { title, description };

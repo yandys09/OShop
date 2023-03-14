@@ -3,7 +3,6 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getBrands,
-  deleteBrand,
   resetMutationResult,
   selectAllBrands,
   selectBrandMutationResult,
@@ -13,7 +12,8 @@ import { Link } from "react-router-dom";
 import { Box, Typography, IconButton, Tooltip } from "@mui/material";
 import DeleteForeeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
-import BoxShadowLoader from "../../../components/Skeletons/BoxShadowLoader";
+import BoxShadowLoader from "../../Skeletons/BoxShadowLoader";
+import { deleteBrand } from "../../../redux/features/brandSlice";
 
 const BrandList = () => {
   const dispatch = useDispatch();

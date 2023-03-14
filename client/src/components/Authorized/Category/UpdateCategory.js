@@ -4,46 +4,46 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { Box, Typography, TextField, Button } from "@mui/material";
 import UpdateIcon from "@mui/icons-material/Update";
-import BoxShadowLoader from "./../../Skeletons/BoxShadowLoader";
+import BoxShadowLoader from "../../Skeletons/BoxShadowLoader";
 import {
-  brandDetails,
+  categoryDetails,
   resetMutationResult,
-  selectBrandDetails,
-  selectBrandMutationResult,
-  updateBrand,
-} from "./../../../redux/features/brandSlice";
+  selectCategoryDetails,
+  selectCategoryMutationResult,
+  updateCategory,
+} from "../../../redux/features/categorySlice";
 
-const UpdateBrand = () => {
+const UpdateCategory = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  const { loading, brand } = useSelector(selectBrandDetails);
+  const { loading, category } = useSelector(selectCategoryDetails);
   const { loading: isUpdating, success } = useSelector(
-    selectBrandMutationResult
+    selectCategoryMutationResult
   );
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const jsonData = { title, description };
-    dispatch(updateBrand({ id, jsonData, toast }));
+    dispatch(updateCategory({ id, jsonData, toast }));
   };
 
   useEffect(() => {
     if (success) {
       dispatch(resetMutationResult());
     }
-    dispatch(brandDetails({ id, toast }));
-  }, [dispatch, id , success]);
+    dispatch(categoryDetails({ id, toast }));
+  }, [dispatch, id, success]);
 
   useEffect(() => {
-    if (brand) {
-      setTitle(brand.title);
-      setDescription(brand.description);
+    if (category) {
+      setTitle(category.title);
+      setDescription(category.description);
     }
-  }, [brand]);
+  }, [category]);
 
   return (
     <>
@@ -59,7 +59,7 @@ const UpdateBrand = () => {
           }}
         >
           <Typography component="div" variant="h5">
-            Update Brand
+            Update Category
           </Typography>
 
           <Box component="form" onSubmit={handleSubmit}>
@@ -95,7 +95,7 @@ const UpdateBrand = () => {
               startIcon={<UpdateIcon />}
               sx={{ mt: 3, mb: 2 }}
             >
-              Update Brand
+              Update Category
             </Button>
           </Box>
         </Box>
@@ -104,4 +104,4 @@ const UpdateBrand = () => {
   );
 };
 
-export default UpdateBrand;
+export default UpdateCategory;

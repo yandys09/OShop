@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import "./App.css";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MainLayout from "./components/Layout/MainLayout";
 import Aboutus from "./components/Pages/Aboutus";
@@ -16,6 +16,10 @@ import Dashboard from "./components/Authorized/Dashboard/Dashboard";
 import AddNewBrand from "./components/Authorized/Brand/AddNewBrand";
 import BrandList from "./components/Authorized/Brand/BrandList";
 import UpdateBrand from "./components/Authorized/Brand/UpdateBrand";
+
+import AddNewCategory from "./components/Authorized/Category/AddNewCategory";
+import CategoryList from "./components/Authorized/Category/CategoryList";
+import UpdateCategory from "./components/Authorized/Category/UpdateCategory";
 
 function App() {
   return (
@@ -45,9 +49,14 @@ function App() {
 
             <Route path="/authorized" element={<AuthorizedRoute />}>
               <Route path="dashboard" element={<Dashboard />} />
+
               <Route path="brand" element={<AddNewBrand />} />
               <Route path="brandlist" element={<BrandList />} />
               <Route path="brand/:id" element={<UpdateBrand />} />
+
+              <Route path="category" element={<AddNewCategory />} />
+              <Route path="categorylist" element={<CategoryList />} />
+              <Route path="category/:id" element={<UpdateCategory />} />
             </Route>
           </Route>
         </Route>

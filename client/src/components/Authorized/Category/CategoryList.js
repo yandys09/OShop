@@ -2,32 +2,33 @@ import React, { useEffect } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  getBrands,
-  deleteBrand,
+  getCategories,
+  deleteCategory,
   resetMutationResult,
-  selectAllBrands,
-  selectBrandMutationResult,
-} from "../../../redux/features/brandSlice";
+  selectAllCategories,
+  selectCategoryMutationResult,
+} from "../../../redux/features/categorySlice";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { Box, Typography, IconButton, Tooltip } from "@mui/material";
 import DeleteForeeverIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
-import BoxShadowLoader from "../../../components/Skeletons/BoxShadowLoader";
+import BoxShadowLoader from "../../Skeletons/BoxShadowLoader";
 
-const BrandList = () => {
+
+const CategoryList = () => {
   const dispatch = useDispatch();
-  const { loading, brands } = useSelector(selectAllBrands);
-  const { success } = useSelector(selectBrandMutationResult);
+  const { loading, categories } = useSelector(selectAllCategories);
+  const { success } = useSelector(selectCategoryMutationResult);
 
   const deleteHandler = (id) => {
-    dispatch(deleteBrand({ id, toast }));
+    dispatch(deleteCategory({ id, toast }));
   };
 
   const columns = [
     {
       field: "title",
-      headerName: "Brands",
+      headerName: "Categories",
       headerClassName: "gridHeader",
       flex: 1,
       minWidth: 170,
@@ -50,7 +51,7 @@ const BrandList = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={`/authorized/brand/${params.row.id}`}>
+            <Link to={`/authorized/category/${params.row.id}`}>
               <Tooltip title="Edit" placement="top">
                 <EditIcon
                   sx={{ width: "20px", height: "20px", color: "#1976d2" }}
@@ -72,12 +73,12 @@ const BrandList = () => {
     },
   ];
   const rows = [];
-  brands &&
-    brands.forEach((brand) => {
+  categories &&
+    categories.forEach((category) => {
       rows.push({
-        id: brand._id,
-        title: brand.title,
-        description: brand.description,
+        id: category._id,
+        title: category.title,
+        description: category.description,
       });
     });
   useEffect(
@@ -85,7 +86,7 @@ const BrandList = () => {
       if (success) {
         dispatch(resetMutationResult());
       }
-      dispatch(getBrands({ toast }));
+      dispatch(getCategories({ toast }));
     },
     [dispatch, success]
   );
@@ -101,7 +102,7 @@ const BrandList = () => {
       }}
     >
       <Typography component="h1" variant="h5" sx={{ mb: 4 }}>
-        Full list of brands
+        Full list of Categories
       </Typography>
       {loading ? (
         <BoxShadowLoader />
@@ -117,4 +118,4 @@ const BrandList = () => {
   );
 };
 
-export default BrandList;
+export default CategoryList;

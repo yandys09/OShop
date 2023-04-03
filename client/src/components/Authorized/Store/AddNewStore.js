@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import {
-  CountryDropdown,
-  RegionDropdown,
-} from "react-country-region-selector";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 
 import {
   Box,
@@ -160,16 +157,17 @@ const AddNewStore = () => {
           <Grid item xs={6}>
             <CountryDropdown
               classes="ship-drop-down"
-              defaultOptionLabel="Select a coutry"
+              defaultOptionLabel="Select a country"
               style={{ width: "100%" }}
               value={country}
               valueType="short"
-              priorityOptions={["KO","CA", "US"]}
+              priorityOptions={["KR", "US", "GB", "CA"]}
               onChange={(e) => setCountry(e)}
             />
           </Grid>
           <Grid item xs={6}>
-            <RegionDropdown              classes="ship-drop-down"
+            <RegionDropdown
+              classes="ship-drop-down"
               defaultOptionLabel="Now select a region"
               blankOptionLabel="No country selected"
               style={{ width: "100%" }}
@@ -216,8 +214,8 @@ const AddNewStore = () => {
               sx={{
                 m: 1,
                 bgcolor: "primary.main",
-                height: "80px",
-                width: "80px",
+                height: "60px",
+                width: "60px",
                 fontSize: "5.35rem",
               }}
             >
@@ -227,8 +225,9 @@ const AddNewStore = () => {
                 />
               ) : (
                 <img
+                  alt="avatar"
                   src={previewLogo}
-                  style={{ height: "80px", width: "80px", borderRadius: "50%" }}
+                  style={{ height: "60px", width: "60px", borderRadius: "50%" }}
                 />
               )}
             </Avatar>

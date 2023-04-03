@@ -184,11 +184,11 @@ const UpdateStore = () => {
               <Grid item xs={6}>
                 <CountryDropdown
                   classes="ship-drop-down"
-                  defaultOptionLabel="Select a coutry"
+                  defaultOptionLabel="Select a country"
                   style={{ width: "100%" }}
                   value={country}
                   valueType="short"
-                  priorityOptions={["CA", "US", "IN", "GB"]}
+                  priorityOptions={["KR", "US", "GB", "CA"]}
                   onChange={(e) => setCountry(e)}
                 />
               </Grid>
@@ -247,6 +247,7 @@ const UpdateStore = () => {
                 >
                   {previewLogo === "" ? (
                     <img
+                      alt="avatar"
                       src={IMAGE_BASEURL + logo}
                       style={{
                         height: "80px",
@@ -256,6 +257,7 @@ const UpdateStore = () => {
                     />
                   ) : (
                     <img
+                      alt="avatar"
                       src={previewLogo}
                       style={{
                         height: "80px",

@@ -21,47 +21,60 @@ import AddNewCategory from "./components/Authorized/Category/AddNewCategory";
 import CategoryList from "./components/Authorized/Category/CategoryList";
 import UpdateCategory from "./components/Authorized/Category/UpdateCategory";
 
+import AddNewStore from "./components/Authorized/Store/AddNewStore";
+import StoreList from "./components/Authorized/Store/StoreList";
+import UpdateStore from "./components/Authorized/Store/UpdateStore";
+
+
+
 function App() {
+  
   return (
-    <div className="App">
-      <ToastContainer
-        position="top-center"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+   
+      <div className="App">
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+        />
 
-      <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<Aboutus />} />
-          <Route path="contact-us" element={<Contactus />} />
-          <Route path="auth" element={<Auth />} />
-          <Route path="/" element={<AuthenticatedRoute />}>
-            <Route path="profile" element={<UserProfile />} />
-            <Route path="/me/update" element={<UpdateProfile />} />
-            <Route path="/password/update" element={<UpdatePassword />} />
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Aboutus />} />
+            <Route path="contact-us" element={<Contactus />} />
+            <Route path="auth" element={<Auth />} />
+            <Route path="/" element={<AuthenticatedRoute />}>
+              <Route path="profile" element={<UserProfile />} />
+              <Route path="/me/update" element={<UpdateProfile />} />
+              <Route path="/password/update" element={<UpdatePassword />} />
 
-            <Route path="/authorized" element={<AuthorizedRoute />}>
-              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="/authorized" element={<AuthorizedRoute />}>
+                <Route path="dashboard" element={<Dashboard />} />
 
-              <Route path="brand" element={<AddNewBrand />} />
-              <Route path="brandlist" element={<BrandList />} />
-              <Route path="brand/:id" element={<UpdateBrand />} />
+                <Route path="brand" element={<AddNewBrand />} />
+                <Route path="brandlist" element={<BrandList />} />
+                <Route path="brand/:id" element={<UpdateBrand />} />
 
-              <Route path="category" element={<AddNewCategory />} />
-              <Route path="categorylist" element={<CategoryList />} />
-              <Route path="category/:id" element={<UpdateCategory />} />
+                <Route path="category" element={<AddNewCategory />} />
+                <Route path="categorylist" element={<CategoryList />} />
+                <Route path="category/:id" element={<UpdateCategory />} />
+
+                <Route path="store" element={<AddNewStore />} />
+                <Route path="storelist" element={<StoreList />} />
+                <Route path="store/:id" element={<UpdateStore />} />
+              </Route>
             </Route>
           </Route>
-        </Route>
-      </Routes>
-    </div>
+        </Routes>
+      </div>
+  
   );
 }
 
